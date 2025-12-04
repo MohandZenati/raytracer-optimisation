@@ -36,7 +36,7 @@ cd build
 Run `cmake` to create the build configuration:
 
 ```bash
-cmake ..
+CC=gcc CXX=g++ cmake ..
 ```
 
 Build the raytracer:
@@ -50,6 +50,45 @@ Run the raytracer:
 ```bash
 ./raytracer 
 ```
+
+## Testing
+
+This project includes an end-to-end test suite using CTest to ensure that optimizations don't introduce regressions.
+
+### Quick Test Run
+
+From the project root:
+
+```bash
+./run_tests.sh
+```
+
+### Manual Test Run
+
+From the build directory:
+
+```bash
+cd build
+ctest
+```
+
+For verbose output:
+
+```bash
+ctest --verbose
+```
+
+### Test Suite Details
+
+The test suite includes:
+
+1. **Empty Scene Test** (Edge Case): Validates handling of scenes with no objects
+2. **Single Sphere Test** (Regular Case): Tests basic rendering with one object and lighting
+3. **Invalid Scene Test** (Failure Demo): Demonstrates test failure detection
+
+Tests are consistent, repeatable, and can detect regressions through pixel-perfect image comparison.
+
+See `tests/README.md` for complete documentation.
 
 ## Adding/modifying the project
 

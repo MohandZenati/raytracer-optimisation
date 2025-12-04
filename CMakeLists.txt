@@ -26,3 +26,7 @@ target_link_libraries(raytracer
                       lodepng
                       )
 
+# Enable testing with CTest
+enable_testing()
+add_subdirectory(tests)
+
