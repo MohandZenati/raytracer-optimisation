@@ -59,6 +59,34 @@ Each time you modify the project structure by adding a new class to compile, add
 cmake ..
 ```
 
+## End-to-end regression tests
+
+The project now ships with deterministic end-to-end tests that render reference
+scenes and compare the produced PNG with a committed baseline image. This allows
+us to catch functional regressions that would otherwise be visible only to the
+human eye.
+
+1. Configure and build as usual:
+   ```bash
+   cmake -S . -B build -DCMAKE_CXX_COMPILER=g++
+   cmake --build build
+   ```
+2. Execute the test suite:
+   ```bash
+   ctest --test-dir build -V
+   ```
+
+CTest invokes `tests/e2e/run_raytrace_and_compare.py`, which:
+
+- runs the `raytracer` binary for each test scene (`scenes/tests/*.json`);
+- compares the output image with `tests/baseline/*.png` using a SHA-256 hash;
+- prints useful metrics such as `render_time_seconds` and the generated hash in
+  a `[metrics] {...}` line so you can track optimisation progress across runs.
+
+To regenerate a baseline after making an intentional visual change, rerun the
+helper with `--allow-mismatch` and copy the resulting PNG from
+`build/test-artifacts/*.png` into `tests/baseline/`.
+
 ## Running the raytracer
 
 The raytracer uses an input JSON file (as the first argument) to specify the scene to be rendered.
