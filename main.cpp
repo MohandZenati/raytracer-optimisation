@@ -27,14 +27,27 @@ int main(int argc, char *argv[])
   }
 
   std::cout << "Rendering " << image->width << "x" << image->height << " pixels..." << std::endl;
+  std::cout << "Scene info:" << std::endl;
+  std::cout << "  Total pixels:   " << (image->width * image->height) << std::endl;
+  std::cout << "  Reflections:    " << camera->Reflections << std::endl;
+  std::cout << std::endl;
 
   auto begin = std::chrono::high_resolution_clock::now();
   camera->render(*image, *scene);
   auto end = std::chrono::high_resolution_clock::now();
   auto elapsed = std::chrono::duration_cast<std::chrono::nanoseconds>(end - begin);
 
+  double seconds = elapsed.count() * 1e-9;
+  long long totalPixels = (long long)image->width * image->height;
+  double pixelsPerSecond = totalPixels / seconds;
+
   std::cout << "Done." << std::endl;
-  std::printf("Total time: %.3f seconds.\n", elapsed.count() * 1e-9);
+  std::cout << std::endl;
+  std::cout << "Performance Metrics:" << std::endl;
+  std::printf("  Total time:         %.3f seconds\n", seconds);
+  std::printf("  Pixels per second:  %.0f\n", pixelsPerSecond);
+  std::printf("  Time per pixel:     %.2f microseconds\n", (seconds * 1e6) / totalPixels);
+  std::cout << std::endl;
 
   std::cout << "Writing file: " << outpath << std::endl;
   image->writeFile(outpath);

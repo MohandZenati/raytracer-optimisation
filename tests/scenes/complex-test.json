@@ -1,0 +1,161 @@
+{
+    "image": {
+        "width": 400,
+        "height": 300
+    },
+    "reflections": 2,
+    "ambient": {
+        "r": 1,
+        "g": 1,
+        "b": 1
+    },
+    "lights": [
+        {
+            "type": "point",
+            "position": {
+                "x": -3,
+                "y": 2,
+                "z": 0
+            },
+            "diffuse": {
+                "r": 0.3,
+                "g": 0.3,
+                "b": 0.3
+            },
+            "specular": {
+                "r": 0.6,
+                "g": 0.6,
+                "b": 0.6
+            }
+        },
+        {
+            "type": "point",
+            "position": {
+                "x": 3,
+                "y": 2,
+                "z": 0
+            },
+            "diffuse": {
+                "r": 0.2,
+                "g": 0.2,
+                "b": 0.2
+            },
+            "specular": {
+                "r": 0.4,
+                "g": 0.4,
+                "b": 0.4
+            }
+        }
+    ],
+    "objects": [
+        {
+            "type": "sphere",
+            "radius": 0.8,
+            "position": {
+                "x": -1.5,
+                "y": 0,
+                "z": 4
+            },
+            "material": {
+                "type": "phong",
+                "ambient": {
+                    "r": 1,
+                    "g": 0,
+                    "b": 0
+                },
+                "diffuse": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                },
+                "specular": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                },
+                "shininess": 40,
+                "reflectivity": 0.5
+            }
+        },
+        {
+            "type": "sphere",
+            "radius": 0.8,
+            "position": {
+                "x": 1.5,
+                "y": 0,
+                "z": 4
+            },
+            "material": {
+                "type": "phong",
+                "ambient": {
+                    "r": 0,
+                    "g": 0,
+                    "b": 1
+                },
+                "diffuse": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                },
+                "specular": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                },
+                "shininess": 40,
+                "reflectivity": 0.5
+            }
+        },
+        {
+            "type": "sphere",
+            "radius": 0.5,
+            "position": {
+                "x": 0,
+                "y": 1,
+                "z": 3
+            },
+            "material": {
+                "type": "phong",
+                "ambient": {
+                    "r": 0,
+                    "g": 1,
+                    "b": 0
+                },
+                "diffuse": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                },
+                "specular": {
+                    "r": 1,
+                    "g": 1,
+                    "b": 1
+                },
+                "shininess": 60,
+                "reflectivity": 0.7
+            }
+        },
+        {
+            "type": "plane",
+            "position": {
+                "x": 0,
+                "y": -0.8,
+                "z": 0
+            },
+            "normal": {
+                "x": 0,
+                "y": 1,
+                "z": 0
+            },
+            "material": {
+                "type": "checkerboard",
+                "ambient": {
+                    "r": 0.3,
+                    "g": 0.3,
+                    "b": 0.3
+                },
+                "reflectivity": 0.3
+            }
+        }
+    ]
+}
