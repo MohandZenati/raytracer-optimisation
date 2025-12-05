@@ -37,7 +37,7 @@ void Scene::prepare()
   }
 }
 
-std::vector<Light *> Scene::getLights()
+const std::vector<Light *>& Scene::getLights() const
 {
   return lights;
 }
